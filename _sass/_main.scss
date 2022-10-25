@@ -34,6 +34,13 @@ pre {
 	margin: .5rem 0;
 }
 
+.post img{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-height: 50vh;
+	max-width: 100vh;
+}
 .post h1, .post h2, .post h3, .post h4 {
 	margin: 1rem 0;
 }
