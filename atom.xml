@@ -4,7 +4,7 @@
  <title>Lucky Red Lantern</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2022-10-25T14:24:08+00:00</updated>
+ <updated>2022-10-25T15:10:18+00:00</updated>
  <id></id>
  <author>
    <name>Olivier Milla</name>
@@ -121,6 +121,128 @@ Supply and demand are matched and cleared where&lt;/p&gt;
 &lt;p&gt;If you were to use an order book, the likelihood that you could clear more than 1 order at the same time would be very low and your Index Price will look like Option1.&lt;/p&gt;
 
 &lt;p&gt;That’s what auctions for fixing prices are for.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Auctions with variable supply in crypto NFT markets.</title>
+   <link href="/2021/09/07/auctions-with-variable-supply-in-nft-markets"/>
+   <updated>2021-09-07T06:42:19+00:00</updated>
+   <id>/2021/09/07/auctions-with-variable-supply-in-nft-markets</id>
+   <content type="html">&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;This paper introduces an auction design for NFT series that allows for a better equilibrium between demand and supply.&lt;/p&gt;
+
+&lt;p&gt;It does so by creating an auction where participants (both creators and bidders) state their preferences in terms of both PRICE and EDITION SIZE.&lt;/p&gt;
+
+&lt;p&gt;The design allows the creators to&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Maximize their revenues.&lt;/li&gt;
+  &lt;li&gt;Reach their maximum audience within price and edition size boundaries that they control.&lt;/li&gt;
+  &lt;li&gt;Provide a fair distribution, giving all successful bidders the same NFT price (aka floor).&lt;/li&gt;
+  &lt;li&gt;Preserve their brands, as failed NFT auctions can destroy the trust your customers place when they enter an auction for one of your series. If they do that regularly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It also allows bidders to&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Enter auctions more safely by allowing them to place both price and edition size limits outside of which they wish not to participate. This allows them to trade within their budget but also to target an edition size minimum (below which they consider the NFT auction a failure) and maximum (after which they consider the NFTs are not scarce enough for them).&lt;/li&gt;
+  &lt;li&gt;Enter auctions more efficiently as the design lessens the gas race that can occur on fixed-size auctions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Both creators and bidders benefit from the fact that the equilibrium found with that design is less volatile post-auction as it finds an equilibrium both in terms of price AND market size.&lt;/p&gt;
+
+&lt;p&gt;This is particularly important for NFTs that have utilities/constraints/interactions/upsells later on during their lifetime, allowing for a secondary market to open in a more price-stable way.&lt;/p&gt;
+
+&lt;div class=&quot;jekyll-twitter-plugin&quot;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;What is the best way to distribute NFTs without gas wars?&lt;/p&gt;&amp;mdash; defiprime (@defiprime) &lt;a href=&quot;https://twitter.com/defiprime/status/1434644596579913729?ref_src=twsrc%5Etfw&quot;&gt;September 5, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let’s go.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-problem&quot;&gt;The Problem&lt;/h1&gt;
+&lt;h2 id=&quot;from-the-point-of-view-of-the-creator&quot;&gt;From the point of view of the creator&lt;/h2&gt;
+&lt;p&gt;Each creator has its preference regarding the NFT size they see fit:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Some creators want to express “I created the new Mona Lisa, there shall be 3 NFTs and no more”.&lt;/li&gt;
+  &lt;li&gt;Some creators want to create an edition targeting a community/market size. These opportunities have an equilibrium at which they function. Too few is a failure and too many is a failure.&lt;/li&gt;
+  &lt;li&gt;Some creators want to optimize for REACH. This is equivalent to optimizing for a maximum number of users.&lt;/li&gt;
+  &lt;li&gt;Some creators also simply have technical constraints. For instance, generative arts algorithms could generate only max N variations. Or if the NFT is used to grant access to a Discord channel, they wish that channel to be of a manageable size.
+Creators also obviously seek to maximize their revenues.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;from-the-point-of-view-of-the-bidders&quot;&gt;From the point of view of the bidders&lt;/h2&gt;
+&lt;p&gt;Bidders also have preferences for entering an auction.&lt;/p&gt;
+
+&lt;p&gt;Whether it is an art they are buying, access to a market or a key to a community, they each have&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a budget&lt;/li&gt;
+  &lt;li&gt;a desire to buy the NFT at the same price as everyone else during the auction.&lt;/li&gt;
+  &lt;li&gt;a desire to pay the smallest price possible.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;supply boundaries that they prefer:&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;Some art collectors only deal with very scarce items, similarly to art collectors and don’t want to enter a crowded market.&lt;/li&gt;
+      &lt;li&gt;Some others have boundaries, for instance for in-game NFTs where they know the mechanics and they are ok to purchase something if there are enough of it, and not too many.&lt;/li&gt;
+      &lt;li&gt;Some others want to buy their NFTs whatever the edition size. They just like the stuff and have no price and/or edition size boundaries&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;the-solution&quot;&gt;The solution&lt;/h1&gt;
+&lt;p&gt;The solution is to design an auction where&lt;/p&gt;
+
+&lt;h3 id=&quot;the-creator-specifies&quot;&gt;the creator specifies&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a minimum and maximum edition size. The minimum size is your kickstarter target. You may want to cancel the entire thing (and try again later with more marketing) if not enough NFTs are minted for the game to function otherwise the few people who showed up could feel scammed. The maximum edition is the hard limit of the mint.&lt;/li&gt;
+  &lt;li&gt;a minimum revenue that applies to the whole edition below which they are ready to cancel the whole thing and refund the participants.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-bidders-specify&quot;&gt;the bidders specify&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;a minimum and a maximum NFT price. Outside this zone, they do not wish to participate.&lt;/li&gt;
+  &lt;li&gt;a minimum and maximum edition size. If the edition size is outside these boundaries, they do not wish to participate either.
+    &lt;h2 id=&quot;solving-multiple-possible-equilibrium-solutions&quot;&gt;Solving multiple possible equilibrium solutions&lt;/h2&gt;
+    &lt;p&gt;Multiple solutions may provide the same revenue to the creator. They can then either decide on the solution they prefer either by&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;time of arrival. (current gas war)&lt;/li&gt;
+  &lt;li&gt;edition size (creators choose to select either the smallest edition size or the biggest)
+random choice&lt;/li&gt;
+  &lt;li&gt;Or a combination of them (first the edition size, if there are still multiple solutions, the time of arrival or a random solution).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Obviously, current gas war auctions are a special case of this auction design where they set&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No minimum revenue at the edition level.&lt;/li&gt;
+  &lt;li&gt;Hard minimum and maximum edition size, set to the same value.&lt;/li&gt;
+  &lt;li&gt;Give the users no choice but to pay for the gas war by not giving them edition size boundaries.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;extensions&quot;&gt;Extensions&lt;/h1&gt;
+&lt;p&gt;A lot of constraints can be added or removed. For instance, if your NFTs have in-game mechanisms or characteristics that require that some NFTs are present from day one, you can add constraints that allow for an auction to succeed only if some quantities are met or you can prioritize certain NFTs over others for the game to work.&lt;/p&gt;
+
+&lt;h1 id=&quot;technicalities&quot;&gt;Technicalities&lt;/h1&gt;
+&lt;p&gt;An algorithm may take a lo(ooooo)ong time to solve such an auction and it probably can’t run fully on chain (I’m no expert here, feel free to comment). It would probably take an on-chain with an off-chain ping-pong to work.
+Last but not least, it works for fungible tokens too, helping projects find the right price and supply for an ICO/ECO.
+Reach out on Twitter if you’re interested in discussing the topic in public or private, DMs are open.&lt;/p&gt;
+
+&lt;p&gt;Cheers,&lt;/p&gt;
+
+&lt;p&gt;Some Links on the subject&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.simondlr.com/posts/maximising-blockchain-collectible-economies&quot;&gt;Maximising Blockchain Collectible Economies — (simondlr.com)&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://blog.simondlr.com/posts/exploring-nft-economies&quot;&gt;Exploring NFT Economies: Creators, Collectors, &amp;amp; Collection Sizes. — (simondlr.com)&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;edit&quot;&gt;Edit&lt;/h1&gt;
+&lt;p&gt;It is also possible to factor in the bidders’ preference in terms of quantity of items acquired: “I want to acquire at least X items and at most Y” but as well as the percentage of ownership: “I want to acquire at least W% and at most Z% of the items”.&lt;/p&gt;
+
 </content>
  </entry>
  

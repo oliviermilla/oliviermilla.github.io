@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-25T14:24:08+00:00</updated><id>/feed.xml</id><title type="html">Lucky Red Lantern</title><subtitle>Simple and minimalistic jekyll blogging theme.</subtitle><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><entry><title type="html">Fixing NFT floor prices with blind auctions.</title><link href="/2021/09/16/fixing-nft-floors-with-blind-auctions" rel="alternate" type="text/html" title="Fixing NFT floor prices with blind auctions." /><published>2021-09-16T17:42:19+00:00</published><updated>2021-09-16T17:42:19+00:00</updated><id>/2021/09/16/Fixing-NFT-floors-with-blind-auctions</id><content type="html" xml:base="/2021/09/16/fixing-nft-floors-with-blind-auctions"><![CDATA[<p>This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm <a href="https://www.paradigm.xyz/2021/08/floor-perps/">here</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-25T15:10:18+00:00</updated><id>/feed.xml</id><title type="html">Lucky Red Lantern</title><subtitle>Simple and minimalistic jekyll blogging theme.</subtitle><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><entry><title type="html">Fixing NFT floor prices with blind auctions.</title><link href="/2021/09/16/fixing-nft-floors-with-blind-auctions" rel="alternate" type="text/html" title="Fixing NFT floor prices with blind auctions." /><published>2021-09-16T17:42:19+00:00</published><updated>2021-09-16T17:42:19+00:00</updated><id>/2021/09/16/Fixing-NFT-floors-with-blind-auctions</id><content type="html" xml:base="/2021/09/16/fixing-nft-floors-with-blind-auctions"><![CDATA[<p>This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm <a href="https://www.paradigm.xyz/2021/08/floor-perps/">here</a>.</p>
 
 <p>In essence, the problem is that for any financial derivative contract to exist, it needs an underlying value/price to track. What is commonly done on NFT marketplaces such as OpenSea is to define the “floor price” as the lowest offered price on any item of an NFT collection and use that as the underlying price.</p>
 
@@ -101,4 +101,116 @@ Supply and demand are matched and cleared where</p>
 
 <p>If you were to use an order book, the likelihood that you could clear more than 1 order at the same time would be very low and your Index Price will look like Option1.</p>
 
-<p>That’s what auctions for fixing prices are for.</p>]]></content><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><category term="crypto" /><category term="nft" /><category term="market-design" /><category term="auctions" /><summary type="html"><![CDATA[This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm here.]]></summary></entry></feed>
+<p>That’s what auctions for fixing prices are for.</p>]]></content><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><category term="crypto" /><category term="nft" /><category term="market-design" /><category term="auctions" /><summary type="html"><![CDATA[This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm here.]]></summary></entry><entry><title type="html">Auctions with variable supply in crypto NFT markets.</title><link href="/2021/09/07/auctions-with-variable-supply-in-nft-markets" rel="alternate" type="text/html" title="Auctions with variable supply in crypto NFT markets." /><published>2021-09-07T06:42:19+00:00</published><updated>2021-09-07T06:42:19+00:00</updated><id>/2021/09/07/auctions-with-variable-supply-in-nft-markets</id><content type="html" xml:base="/2021/09/07/auctions-with-variable-supply-in-nft-markets"><![CDATA[<h1 id="overview">Overview</h1>
+<p>This paper introduces an auction design for NFT series that allows for a better equilibrium between demand and supply.</p>
+
+<p>It does so by creating an auction where participants (both creators and bidders) state their preferences in terms of both PRICE and EDITION SIZE.</p>
+
+<p>The design allows the creators to</p>
+
+<ul>
+  <li>Maximize their revenues.</li>
+  <li>Reach their maximum audience within price and edition size boundaries that they control.</li>
+  <li>Provide a fair distribution, giving all successful bidders the same NFT price (aka floor).</li>
+  <li>Preserve their brands, as failed NFT auctions can destroy the trust your customers place when they enter an auction for one of your series. If they do that regularly.</li>
+</ul>
+
+<p>It also allows bidders to</p>
+
+<ul>
+  <li>Enter auctions more safely by allowing them to place both price and edition size limits outside of which they wish not to participate. This allows them to trade within their budget but also to target an edition size minimum (below which they consider the NFT auction a failure) and maximum (after which they consider the NFTs are not scarce enough for them).</li>
+  <li>Enter auctions more efficiently as the design lessens the gas race that can occur on fixed-size auctions.</li>
+</ul>
+
+<p>Both creators and bidders benefit from the fact that the equilibrium found with that design is less volatile post-auction as it finds an equilibrium both in terms of price AND market size.</p>
+
+<p>This is particularly important for NFTs that have utilities/constraints/interactions/upsells later on during their lifetime, allowing for a secondary market to open in a more price-stable way.</p>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">What is the best way to distribute NFTs without gas wars?</p>&mdash; defiprime (@defiprime) <a href="https://twitter.com/defiprime/status/1434644596579913729?ref_src=twsrc%5Etfw">September 5, 2021</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<p>Let’s go.</p>
+
+<h1 id="the-problem">The Problem</h1>
+<h2 id="from-the-point-of-view-of-the-creator">From the point of view of the creator</h2>
+<p>Each creator has its preference regarding the NFT size they see fit:</p>
+
+<ul>
+  <li>Some creators want to express “I created the new Mona Lisa, there shall be 3 NFTs and no more”.</li>
+  <li>Some creators want to create an edition targeting a community/market size. These opportunities have an equilibrium at which they function. Too few is a failure and too many is a failure.</li>
+  <li>Some creators want to optimize for REACH. This is equivalent to optimizing for a maximum number of users.</li>
+  <li>Some creators also simply have technical constraints. For instance, generative arts algorithms could generate only max N variations. Or if the NFT is used to grant access to a Discord channel, they wish that channel to be of a manageable size.
+Creators also obviously seek to maximize their revenues.</li>
+</ul>
+
+<h2 id="from-the-point-of-view-of-the-bidders">From the point of view of the bidders</h2>
+<p>Bidders also have preferences for entering an auction.</p>
+
+<p>Whether it is an art they are buying, access to a market or a key to a community, they each have</p>
+
+<ul>
+  <li>a budget</li>
+  <li>a desire to buy the NFT at the same price as everyone else during the auction.</li>
+  <li>a desire to pay the smallest price possible.</li>
+  <li>
+    <p>supply boundaries that they prefer:</p>
+
+    <ol>
+      <li>Some art collectors only deal with very scarce items, similarly to art collectors and don’t want to enter a crowded market.</li>
+      <li>Some others have boundaries, for instance for in-game NFTs where they know the mechanics and they are ok to purchase something if there are enough of it, and not too many.</li>
+      <li>Some others want to buy their NFTs whatever the edition size. They just like the stuff and have no price and/or edition size boundaries</li>
+    </ol>
+  </li>
+</ul>
+
+<h1 id="the-solution">The solution</h1>
+<p>The solution is to design an auction where</p>
+
+<h3 id="the-creator-specifies">the creator specifies</h3>
+
+<ul>
+  <li>a minimum and maximum edition size. The minimum size is your kickstarter target. You may want to cancel the entire thing (and try again later with more marketing) if not enough NFTs are minted for the game to function otherwise the few people who showed up could feel scammed. The maximum edition is the hard limit of the mint.</li>
+  <li>a minimum revenue that applies to the whole edition below which they are ready to cancel the whole thing and refund the participants.</li>
+</ul>
+
+<h3 id="the-bidders-specify">the bidders specify</h3>
+
+<ul>
+  <li>a minimum and a maximum NFT price. Outside this zone, they do not wish to participate.</li>
+  <li>a minimum and maximum edition size. If the edition size is outside these boundaries, they do not wish to participate either.
+    <h2 id="solving-multiple-possible-equilibrium-solutions">Solving multiple possible equilibrium solutions</h2>
+    <p>Multiple solutions may provide the same revenue to the creator. They can then either decide on the solution they prefer either by</p>
+  </li>
+  <li>time of arrival. (current gas war)</li>
+  <li>edition size (creators choose to select either the smallest edition size or the biggest)
+random choice</li>
+  <li>Or a combination of them (first the edition size, if there are still multiple solutions, the time of arrival or a random solution).</li>
+</ul>
+
+<p>Obviously, current gas war auctions are a special case of this auction design where they set</p>
+
+<ul>
+  <li>No minimum revenue at the edition level.</li>
+  <li>Hard minimum and maximum edition size, set to the same value.</li>
+  <li>Give the users no choice but to pay for the gas war by not giving them edition size boundaries.</li>
+</ul>
+
+<h1 id="extensions">Extensions</h1>
+<p>A lot of constraints can be added or removed. For instance, if your NFTs have in-game mechanisms or characteristics that require that some NFTs are present from day one, you can add constraints that allow for an auction to succeed only if some quantities are met or you can prioritize certain NFTs over others for the game to work.</p>
+
+<h1 id="technicalities">Technicalities</h1>
+<p>An algorithm may take a lo(ooooo)ong time to solve such an auction and it probably can’t run fully on chain (I’m no expert here, feel free to comment). It would probably take an on-chain with an off-chain ping-pong to work.
+Last but not least, it works for fungible tokens too, helping projects find the right price and supply for an ICO/ECO.
+Reach out on Twitter if you’re interested in discussing the topic in public or private, DMs are open.</p>
+
+<p>Cheers,</p>
+
+<p>Some Links on the subject</p>
+
+<p><a href="https://blog.simondlr.com/posts/maximising-blockchain-collectible-economies">Maximising Blockchain Collectible Economies — (simondlr.com)</a></p>
+
+<p><a href="https://blog.simondlr.com/posts/exploring-nft-economies">Exploring NFT Economies: Creators, Collectors, &amp; Collection Sizes. — (simondlr.com)</a></p>
+
+<h1 id="edit">Edit</h1>
+<p>It is also possible to factor in the bidders’ preference in terms of quantity of items acquired: “I want to acquire at least X items and at most Y” but as well as the percentage of ownership: “I want to acquire at least W% and at most Z% of the items”.</p>]]></content><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><category term="crypto" /><category term="nft" /><category term="market-design" /><category term="auctions" /><summary type="html"><![CDATA[Overview This paper introduces an auction design for NFT series that allows for a better equilibrium between demand and supply.]]></summary></entry></feed>
