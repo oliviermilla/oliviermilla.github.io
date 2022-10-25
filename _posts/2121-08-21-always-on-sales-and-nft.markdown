@@ -47,6 +47,6 @@ Raising the bar is not incompatible with Harberger, but in our case, if CryptoPu
 
 They will find a way. And the community will be back to trading opinions. Intangibles, can’t be traded. And that’s what punk6529 wishes for:
 
-{% https://twitter.com/picarooninc/status/1429537396769632258 %}
+{% twitter https://twitter.com/picarooninc/status/1429537396769632258 %}
 
 
