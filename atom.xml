@@ -4,7 +4,7 @@
  <title>Lucky Red Lantern</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2022-10-25T13:01:23+00:00</updated>
+ <updated>2022-10-25T14:21:40+00:00</updated>
  <id></id>
  <author>
    <name>Olivier Milla</name>
@@ -13,28 +13,114 @@
 
  
  <entry>
-   <title>Welcome to Jekyll!</title>
-   <link href="/2022/07/14/welcome-to-jekyll"/>
-   <updated>2022-07-14T07:42:19+00:00</updated>
-   <id>/2022/07/14/welcome-to-jekyll</id>
-   <content type="html">&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+   <title>Fixing NFT floor prices with blind auctions.</title>
+   <link href="/2021/09/16/fixing-nft-floors-with-blind-auctions"/>
+   <updated>2021-09-16T17:42:19+00:00</updated>
+   <id>/2021/09/16/Fixing-NFT-floors-with-blind-auctions</id>
+   <content type="html">&lt;p&gt;This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm &lt;a href=&quot;https://www.paradigm.xyz/2021/08/floor-perps/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+&lt;p&gt;In essence, the problem is that for any financial derivative contract to exist, it needs an underlying value/price to track. What is commonly done on NFT marketplaces such as OpenSea is to define the “floor price” as the lowest offered price on any item of an NFT collection and use that as the underlying price.&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Unlike BTC, ETH or any other token, the liquidity of an NFT collection is limited by the edition size and the offered liquidity.&lt;/p&gt;
 
-&lt;p&gt;Where &lt;code&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code&gt;MONTH&lt;/code&gt; and &lt;code&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;p&gt;As a side effect, NFT prices are updated much less often and can even present gaps, making it hard to create derivatives with reasonable initial/maintenance margins.&lt;/p&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;In addition, “floor prices” only take the supply into account without bothering whether there is any real demand at these levels.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;def print_hi(name)
-  puts &amp;quot;Hi, #{name}&amp;quot;
-end
-print_hi(&amp;#39;Tom&amp;#39;)
-#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;Let’s see if we can do better.&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/nft-auction.gif&quot; alt=&quot;NFT auction&quot; /&gt;&lt;/p&gt;
 
+&lt;h1 id=&quot;what-we-seek&quot;&gt;What we seek&lt;/h1&gt;
+&lt;p&gt;We want to be able to produce a NFT series Price Index.&lt;/p&gt;
+
+&lt;h1 id=&quot;why-we-seek&quot;&gt;Why we seek&lt;/h1&gt;
+&lt;p&gt;We want to do that to give people access to synthetic exposure, either long or short to NFT series.&lt;/p&gt;
+
+&lt;p&gt;What are our options?&lt;/p&gt;
+
+&lt;h3 id=&quot;option-1--current-opensea-floor-price&quot;&gt;Option 1 — Current OpenSea Floor Price&lt;/h3&gt;
+&lt;p&gt;That’s using a definition of a floor price equal to the lowest SELL order on the entire NFT series. There are several problems with this.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It relies on a single item in the series which makes the floor volatile. if you are the owner of the NFT, you have direct access to the index. Update your price up and the index moves up. Same on the way down.&lt;/li&gt;
+  &lt;li&gt;The fact that this item is ‘trailing’ the others in the series could be for some external factors which are not representative of the series.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The cool thing though is that it’s simple. It says that if you want to know how much you have to pay to get one (possibly the worst of the series), here is the price you have to pay right now.&lt;/p&gt;
+
+&lt;h3 id=&quot;option-2--the-realized-price&quot;&gt;Option 2 — The Realized Price&lt;/h3&gt;
+&lt;p&gt;Use the realized price:&lt;/p&gt;
+
+\[IndexPrice=\sum_{i=1}^{N}LastPrice_i\]
+
+&lt;p&gt;This represents the value committed in the series, either on the primary or secondary market.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-good-parts&quot;&gt;The good parts&lt;/h4&gt;
+
+&lt;p&gt;You have a price as soon as 1 item in the series is sold on the primary market.
+You have no dependency to liquidity. Days can go without a trade and you’ll be good.
+The Index price evolution is smoothed by the series’ size.
+No faking the order book game. The only way to move the index is to trade an NFT of the series.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-bad-parts&quot;&gt;The bad parts&lt;/h4&gt;
+
+&lt;p&gt;On either side of the market you can take a leveraged position on a derivative tracking the Index Price and manipulate it at profit. That is if the cost of buying the j lowest priced items in the series is less than the gain you will have on your leveraged position. You can then exit your leveraged position and sell back the j items at a price totaling less than the gain you made.&lt;/p&gt;
+
+&lt;h4 id=&quot;variations&quot;&gt;Variations&lt;/h4&gt;
+
+&lt;p&gt;You can have the price expressed in USD base currency with either the ETH/USD current quote or quote at the time of the ith transaction.
+The good thing here is that if the NFT series are sold in both DAI or ETH, it still works.
+Note that using the current ETH/USD quote implies an update rate of the index price at a faster rate to avoid arbitrage.&lt;/p&gt;
+
+&lt;h3 id=&quot;option-3--blind-auctions&quot;&gt;Option 3 — Blind auctions&lt;/h3&gt;
+&lt;p&gt;It goes like this:&lt;/p&gt;
+
+&lt;p&gt;Holders of an item in the NFT series place a minimum price at which they are ready to part with their item. That is the supply S.
+People who wish to acquire an item of the series place a maximum price at which they are ok for a purchase. That is the demand D.
+Nobody knows what any other actor is doing. That is: The people placing an order on either side don’t know if there are other participant on their side or the other side and don’t know the prices or items that participate in the auction.
+Supply and demand are matched and cleared where&lt;/p&gt;
+
+&lt;p&gt;\(IndexPrice=ClearingPrice=\frac{\sum_{i=1}^{j}D_i}{j}\) if \(max(D_i)\geq min(S_i)\)&lt;/p&gt;
+
+&lt;p&gt;\(IndexPrice=max(D_i)\) if \(max(D_i)\lt min(S_i)\)&lt;/p&gt;
+
+&lt;p&gt;\($IndexPrice=min(S_i)\) if there is at least 1 offer (supply side).&lt;/p&gt;
+
+&lt;p&gt;In picture:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/auction-result.png&quot; alt=&quot;NFT auction&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;notes&quot;&gt;Notes&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If a Clearing Price is found an actual transfer of j NFT for cash occurs.&lt;/li&gt;
+  &lt;li&gt;Otherwise you get no transfer but you still get an Index Price of the maximum price somebody is willing to pay to get any NFT from the series or if no demand, the minimum of the supply, which should be equal to Option1.&lt;/li&gt;
+  &lt;li&gt;It is key, that each participant’s preference is respected but the floor price is actually a unique clearing price for all the transfers.&lt;/li&gt;
+  &lt;li&gt;The fact that the auction is hidden forces all the participants to price NFTs for the personal economic value they see. It means that the floor price here is actually much more informed than if participants had access to the other participants orders.&lt;/li&gt;
+  &lt;li&gt;There’s a hedge case where nobody shows up at the auction. While I believe that people will create such a market only for items of interest (aka there is a demand), it’s possible and we could use a fallback method (Option1) or last auction’s Index Price.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;the-good-things-are&quot;&gt;The good things are:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is hard to rig because as soon as you place an order, it may get filled.&lt;/li&gt;
+  &lt;li&gt;But placing an order does not allow you to easily modify the Index Price because&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;if your price is set to the Index Price, it means it is the highest demand, hence the riskier order.&lt;/li&gt;
+  &lt;li&gt;the demand side is open and hence anyone can actually have the upper hand either through clearing or out bidding you.&lt;/li&gt;
+  &lt;li&gt;in the end, the only thing you can know for sure when placing such an order is that you can trade at the floor or not trade at all.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;OK, I see BID and ASK orders here, so why not just go for an order book?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Glad you ask. Because the floor price here is in fact &lt;strong&gt;a mutualized floor price&lt;/strong&gt; of the series. It means it can only exist &lt;strong&gt;when orders are placed at the same time to be cleared together&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you were to use an order book, the likelihood that you could clear more than 1 order at the same time would be very low and your Index Price will look like Option1.&lt;/p&gt;
+
+&lt;p&gt;That’s what auctions for fixing prices are for.&lt;/p&gt;
 </content>
  </entry>
  
