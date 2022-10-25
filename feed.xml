@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-25T14:21:40+00:00</updated><id>/feed.xml</id><title type="html">Lucky Red Lantern</title><subtitle>Simple and minimalistic jekyll blogging theme.</subtitle><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><entry><title type="html">Fixing NFT floor prices with blind auctions.</title><link href="/2021/09/16/fixing-nft-floors-with-blind-auctions" rel="alternate" type="text/html" title="Fixing NFT floor prices with blind auctions." /><published>2021-09-16T17:42:19+00:00</published><updated>2021-09-16T17:42:19+00:00</updated><id>/2021/09/16/Fixing-NFT-floors-with-blind-auctions</id><content type="html" xml:base="/2021/09/16/fixing-nft-floors-with-blind-auctions"><![CDATA[<p>This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm <a href="https://www.paradigm.xyz/2021/08/floor-perps/">here</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-25T14:24:08+00:00</updated><id>/feed.xml</id><title type="html">Lucky Red Lantern</title><subtitle>Simple and minimalistic jekyll blogging theme.</subtitle><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><entry><title type="html">Fixing NFT floor prices with blind auctions.</title><link href="/2021/09/16/fixing-nft-floors-with-blind-auctions" rel="alternate" type="text/html" title="Fixing NFT floor prices with blind auctions." /><published>2021-09-16T17:42:19+00:00</published><updated>2021-09-16T17:42:19+00:00</updated><id>/2021/09/16/Fixing-NFT-floors-with-blind-auctions</id><content type="html" xml:base="/2021/09/16/fixing-nft-floors-with-blind-auctions"><![CDATA[<p>This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm <a href="https://www.paradigm.xyz/2021/08/floor-perps/">here</a>.</p>
 
 <p>In essence, the problem is that for any financial derivative contract to exist, it needs an underlying value/price to track. What is commonly done on NFT marketplaces such as OpenSea is to define the “floor price” as the lowest offered price on any item of an NFT collection and use that as the underlying price.</p>
 
@@ -13,7 +13,7 @@
 <p><img src="/assets/images/nft-auction.gif" alt="NFT auction" /></p>
 
 <h1 id="what-we-seek">What we seek</h1>
-<p>We want to be able to produce a NFT series Price Index.</p>
+<p>We want to be able to produce an NFT series Price Index.</p>
 
 <h1 id="why-we-seek">Why we seek</h1>
 <p>We want to do that to give people access to synthetic exposure, either long or short to NFT series.</p>
@@ -40,13 +40,13 @@
 <h4 id="the-good-parts">The good parts</h4>
 
 <p>You have a price as soon as 1 item in the series is sold on the primary market.
-You have no dependency to liquidity. Days can go without a trade and you’ll be good.
+You have no dependency to liquidity. Days can go by without any trade and you’ll be good.
 The Index price evolution is smoothed by the series’ size.
 No faking the order book game. The only way to move the index is to trade an NFT of the series.</p>
 
 <h4 id="the-bad-parts">The bad parts</h4>
 
-<p>On either side of the market you can take a leveraged position on a derivative tracking the Index Price and manipulate it at profit. That is if the cost of buying the j lowest priced items in the series is less than the gain you will have on your leveraged position. You can then exit your leveraged position and sell back the j items at a price totaling less than the gain you made.</p>
+<p>On either side of the market, you can take a leveraged position on a derivative tracking the Index Price and manipulate it at profit. That is if the cost of buying the j lowest-priced items in the series is less than the gain you will have on your leveraged position. You can then exit your leveraged position and sell back the j items at a price totaling less than the gain you made.</p>
 
 <h4 id="variations">Variations</h4>
 
@@ -59,7 +59,7 @@ Note that using the current ETH/USD quote implies an update rate of the index pr
 
 <p>Holders of an item in the NFT series place a minimum price at which they are ready to part with their item. That is the supply S.
 People who wish to acquire an item of the series place a maximum price at which they are ok for a purchase. That is the demand D.
-Nobody knows what any other actor is doing. That is: The people placing an order on either side don’t know if there are other participant on their side or the other side and don’t know the prices or items that participate in the auction.
+Nobody knows what any other actor is doing. That is: The people placing an order on either side don’t know if there are other participants on their side or the other side and don’t know the prices or items that participate in the auction.
 Supply and demand are matched and cleared where</p>
 
 <p>\(IndexPrice=ClearingPrice=\frac{\sum_{i=1}^{j}D_i}{j}\) if \(max(D_i)\geq min(S_i)\)</p>
