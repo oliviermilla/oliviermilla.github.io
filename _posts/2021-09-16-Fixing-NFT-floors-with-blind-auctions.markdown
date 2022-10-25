@@ -20,7 +20,7 @@ Let's see if we can do better.
 ![NFT auction](/assets/images/nft-auction.gif)
 
 # What we seek
-We want to be able to produce a NFT series Price Index.
+We want to be able to produce an NFT series Price Index.
 
 # Why we seek
 We want to do that to give people access to synthetic exposure, either long or short to NFT series.
@@ -45,13 +45,13 @@ This represents the value committed in the series, either on the primary or seco
 #### The good parts
 
 You have a price as soon as 1 item in the series is sold on the primary market.
-You have no dependency to liquidity. Days can go without a trade and you’ll be good.
+You have no dependency to liquidity. Days can go by without any trade and you’ll be good.
 The Index price evolution is smoothed by the series’ size.
 No faking the order book game. The only way to move the index is to trade an NFT of the series.
 
 #### The bad parts
 
-On either side of the market you can take a leveraged position on a derivative tracking the Index Price and manipulate it at profit. That is if the cost of buying the j lowest priced items in the series is less than the gain you will have on your leveraged position. You can then exit your leveraged position and sell back the j items at a price totaling less than the gain you made.
+On either side of the market, you can take a leveraged position on a derivative tracking the Index Price and manipulate it at profit. That is if the cost of buying the j lowest-priced items in the series is less than the gain you will have on your leveraged position. You can then exit your leveraged position and sell back the j items at a price totaling less than the gain you made.
 
 #### Variations
 
@@ -64,7 +64,7 @@ It goes like this:
 
 Holders of an item in the NFT series place a minimum price at which they are ready to part with their item. That is the supply S.
 People who wish to acquire an item of the series place a maximum price at which they are ok for a purchase. That is the demand D.
-Nobody knows what any other actor is doing. That is: The people placing an order on either side don’t know if there are other participant on their side or the other side and don’t know the prices or items that participate in the auction.
+Nobody knows what any other actor is doing. That is: The people placing an order on either side don’t know if there are other participants on their side or the other side and don’t know the prices or items that participate in the auction.
 Supply and demand are matched and cleared where
 
 $$IndexPrice=ClearingPrice=\frac{\sum_{i=1}^{j}D_i}{j}$$ if $$max(D_i)\geq min(S_i)$$
