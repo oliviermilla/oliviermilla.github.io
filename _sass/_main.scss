@@ -166,6 +166,17 @@ strong, b {
 	font-variant-numeric: tabular-nums;
 }
 
+.post li categories {
+	// TODO align right
+}
+
+.posts li category {
+	// text-align: right;
+	// border-width: 1px;
+	// border-color: #000;
+	// border-style:groove;
+}
+
 .post ul, .project ul, .post ol  {
 	//list-style-position: inside;
 }
