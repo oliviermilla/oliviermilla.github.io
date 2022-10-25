@@ -1,10 +1,17 @@
 <header role="banner">
-   <!--<h1 class="logo">{{ site.title }}</h1>-->
+   <h1 class="logo">
+      <!-- {{ site.title }} -->
+      <img src="/assets/images/lantern.png" alt="">
+   </h1>
+   <h4>A Product blog by Olivier Milla</h4>
+   <br />
+   <br />
+   <br />
    <nav role="navigation">
       <ul>
          {% for item in site.data.navigation.links %}
          <li><a href="{{ item.url }}" {% if item.url==page.url %} class="active" {% endif %}>{{ item.title }}</a></li>
          {% endfor %}
-      </ul>      
+      </ul>
    </nav>
 </header>
