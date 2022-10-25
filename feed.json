@@ -1,6 +1,6 @@
 {
     "version": "https://jsonfeed.org/version/1",
-    "title": "Sidey",
+    "title": "Lucky Red Lantern",
     "home_page_url": "/",
     "feed_url": "/feed.json",
     "description": "Simple and minimalistic jekyll blogging theme.",
@@ -8,7 +8,11 @@
     "favicon": "/favicon.ico",
     "expired": false,
     
-    "author": "{"twitter"=>nil, "name"=>nil, "avatar"=>nil, "email"=>nil, "url"=>nil}",
+    "author":  {
+        "name": "Olivier Milla",
+        "url": null,
+        "avatar": null
+    },
     
 "items": [
     
@@ -27,8 +31,11 @@
             "date_published": "2022-07-14T07:42:19+00:00",
             "date_modified": "2022-07-14T07:42:19+00:00",
             
-                "author": 
-                "{"twitter"=>nil, "name"=>nil, "avatar"=>nil, "email"=>nil, "url"=>nil}"
+                "author":  {
+                "name": "Olivier Milla",
+                "url": null,
+                "avatar": null
+                }
                 
             
         }
