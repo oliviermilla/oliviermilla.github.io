@@ -4,7 +4,7 @@
  <title>Lucky Red Lantern</title>
  <link href="/atom.xml" rel="self"/>
  <link href="/"/>
- <updated>2022-10-25T15:10:18+00:00</updated>
+ <updated>2022-10-25T18:37:19+00:00</updated>
  <id></id>
  <author>
    <name>Olivier Milla</name>
@@ -242,6 +242,68 @@ Reach out on Twitter if you’re interested in discussing the topic in public or
 
 &lt;h1 id=&quot;edit&quot;&gt;Edit&lt;/h1&gt;
 &lt;p&gt;It is also possible to factor in the bidders’ preference in terms of quantity of items acquired: “I want to acquire at least X items and at most Y” but as well as the percentage of ownership: “I want to acquire at least W% and at most Z% of the items”.&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Always on sales and NFTs.</title>
+   <link href="/2021/08/21/always-on-sales-and-nft"/>
+   <updated>2021-08-21T13:42:19+00:00</updated>
+   <id>/2021/08/21/always-on-sales-and-nft</id>
+   <content type="html">&lt;p&gt;I recently came across a Twitter thread proposing a financial engineering solution applying an &lt;a href=&quot;https://medium.com/@simondlr/what-is-harberger-tax-where-does-the-blockchain-fit-in-1329046922c6&quot;&gt;Harberger Tax to NFTs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;jekyll-twitter-plugin&quot;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Harbenger tax -&amp;gt; re-thinking markets from the ground up. 2 core concepts:&lt;br /&gt;&lt;br /&gt;1) Users value their own assets and pay tax continuously on that value &lt;br /&gt;2) At any point in time, anyone else can buy the asset from you at that price, forcing a sale &lt;a href=&quot;https://t.co/cp5psshTEj&quot;&gt;https://t.co/cp5psshTEj&lt;/a&gt;&lt;/p&gt;&amp;mdash; Amber Group (@ambergroup_io) &lt;a href=&quot;https://twitter.com/ambergroup_io/status/1428934731186327560?ref_src=twsrc%5Etfw&quot;&gt;August 21, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;p&gt;Harberger Tax is designed to address the problem that ownership is a monopoly. Simply put, once you are the owner of something, no one can force you to part from it. It is only you who can decide to put your asset on the market.&lt;/p&gt;
+
+&lt;p&gt;Harberger’s idea is to&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Force you to always publish a price at which you would be willing to sell.&lt;/li&gt;
+  &lt;li&gt;Pay a tax, say every year, as a percentage of the price you published.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The reason this is great is that it forces you to fairly price your economic opportunity, pay the tax that goes with it and allow anyone to buy that ownership for a greater economic opportunity.&lt;/p&gt;
+
+&lt;p&gt;You can read more about it over at &lt;a href=&quot;https://www.radicalxchange.org/&quot;&gt;RadicalXChange&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In our case, the core issue is that some NFTs are being snatched by buyers at auctions and leave a lot of person with no access to it. They also can leave sellers with a less valuable outcome. A problem recently addressed by Vitalik Buterin who is proposing &lt;a href=&quot;https://vitalik.ca/general/2021/08/22/prices.html&quot;&gt;a design on how to have more equalitarian access to NFTs/fixed supply tokens sold through auctions/ICOs&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;An experiment has already been done to use something like Harberger Tax by Simon de la Rouviere with &lt;a href=&quot;https://thisartworkisalwaysonsale.com/&quot;&gt;This Artwork Is Always On Sale&lt;/a&gt;. His idea is that the tax rate is patronage to the artist. That is the artist gets ‘dividends’ from his work.&lt;/p&gt;
+
+&lt;p&gt;You can read more about it &lt;a href=&quot;https://blog.simondlr.com/posts/this-artwork-is-always-on-sale-v2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;All this goes in the direction of better market forces but there are other points of view. For instance:&lt;/p&gt;
+
+&lt;div class=&quot;jekyll-twitter-plugin&quot;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;6/ NFTs are built different.   &lt;br /&gt;&lt;br /&gt;There are 18 hoodie nerd glasses punks or 20 squiggles perfect spectrum that will eventually mostly end up in diamond hands over the next months/years as we play some musical chairs and shuffle things around&lt;/p&gt;&amp;mdash; 6529 (@punk6529) &lt;a href=&quot;https://twitter.com/punk6529/status/1423370467096895489?ref_src=twsrc%5Etfw&quot;&gt;August 5, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;p&gt;What is said here is that punk6529 wants to be able to “defend the castle”, &lt;strong&gt;at all costs&lt;/strong&gt;. That is, by saying “no” to a transfer of ownership and hence opposes a mechanic such as always-on-sale.&lt;/p&gt;
+
+&lt;p&gt;Many such people are very actively creating the myth and culture of the metaverse and arguably, without these early builders owning these NFTs NOW, we could (altogether, the commons) be left with a lesser economic opportunity than the one they are building.&lt;/p&gt;
+
+&lt;p&gt;That is the opposite effect of what Harberger stands for.&lt;/p&gt;
+
+&lt;p&gt;In a way, these owners of NFT somewhat agree with the ideas of Harberger. They already agreed to give part of their ownership by &lt;a href=&quot;https://avc.com/2021/08/splitting-ownership-and-display-consumption/&quot;&gt;splitting ownership and display/consumption&lt;/a&gt; as Fred Wilson puts it. An NFT is public, anyone can see it, even ‘right-click’ it and save the underlying JPEG. But ownership is not shared.&lt;/p&gt;
+
+&lt;p&gt;The NFT in itself is off the market. It allows the owner of the NFT to signal to be part of a community.&lt;/p&gt;
+
+&lt;p&gt;To quote &lt;a href=&quot;https://eriktorenberg.substack.com/p/signaling-on-the-internet&quot;&gt;Erik Torenberg&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Membership is the message” and the more exclusive a club is to join, or the more impressive the criteria members need in order to join, the more membership is a signal.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Raising the bar is not incompatible with Harberger, but in our case, if CryptoPunks were always-on-sale, speculation would possibly dilute or eviscerate some of the community behind it. Leaving it off the market protects the community from being invaded by &lt;a href=&quot;https://meaningness.com/geeks-mops-sociopaths&quot;&gt;MOPs and sociopaths&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;They will find a way. And the community will be back to trading opinions. Intangibles, can’t be traded. And that’s what punk6529 wishes for:&lt;/p&gt;
+
+&lt;div class=&quot;jekyll-twitter-plugin&quot;&gt;&lt;blockquote class=&quot;twitter-tweet&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;What they want is being able to &amp;quot;defend the castle&amp;quot;, at all cost. That is, by saying &amp;quot;no&amp;quot; to a transfer of ownership. The key point is that without these people owning these NFTs NOW, we could (altogether) be left with a lesser economic opportunity than the one they are building.&lt;/p&gt;&amp;mdash; Picaroon Inc. (@picarooninc) &lt;a href=&quot;https://twitter.com/picarooninc/status/1429537396769632258?ref_src=twsrc%5Etfw&quot;&gt;August 22, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
 
 </content>
  </entry>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-25T15:10:18+00:00</updated><id>/feed.xml</id><title type="html">Lucky Red Lantern</title><subtitle>Simple and minimalistic jekyll blogging theme.</subtitle><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><entry><title type="html">Fixing NFT floor prices with blind auctions.</title><link href="/2021/09/16/fixing-nft-floors-with-blind-auctions" rel="alternate" type="text/html" title="Fixing NFT floor prices with blind auctions." /><published>2021-09-16T17:42:19+00:00</published><updated>2021-09-16T17:42:19+00:00</updated><id>/2021/09/16/Fixing-NFT-floors-with-blind-auctions</id><content type="html" xml:base="/2021/09/16/fixing-nft-floors-with-blind-auctions"><![CDATA[<p>This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm <a href="https://www.paradigm.xyz/2021/08/floor-perps/">here</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-10-25T18:37:19+00:00</updated><id>/feed.xml</id><title type="html">Lucky Red Lantern</title><subtitle>Simple and minimalistic jekyll blogging theme.</subtitle><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><entry><title type="html">Fixing NFT floor prices with blind auctions.</title><link href="/2021/09/16/fixing-nft-floors-with-blind-auctions" rel="alternate" type="text/html" title="Fixing NFT floor prices with blind auctions." /><published>2021-09-16T17:42:19+00:00</published><updated>2021-09-16T17:42:19+00:00</updated><id>/2021/09/16/Fixing-NFT-floors-with-blind-auctions</id><content type="html" xml:base="/2021/09/16/fixing-nft-floors-with-blind-auctions"><![CDATA[<p>This is a design proposal to solve the problem of “Index Reliability” presented by the VC firm Paradigm <a href="https://www.paradigm.xyz/2021/08/floor-perps/">here</a>.</p>
 
 <p>In essence, the problem is that for any financial derivative contract to exist, it needs an underlying value/price to track. What is commonly done on NFT marketplaces such as OpenSea is to define the “floor price” as the lowest offered price on any item of an NFT collection and use that as the underlying price.</p>
 
@@ -213,4 +213,56 @@ Reach out on Twitter if you’re interested in discussing the topic in public or
 <p><a href="https://blog.simondlr.com/posts/exploring-nft-economies">Exploring NFT Economies: Creators, Collectors, &amp; Collection Sizes. — (simondlr.com)</a></p>
 
 <h1 id="edit">Edit</h1>
-<p>It is also possible to factor in the bidders’ preference in terms of quantity of items acquired: “I want to acquire at least X items and at most Y” but as well as the percentage of ownership: “I want to acquire at least W% and at most Z% of the items”.</p>]]></content><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><category term="crypto" /><category term="nft" /><category term="market-design" /><category term="auctions" /><summary type="html"><![CDATA[Overview This paper introduces an auction design for NFT series that allows for a better equilibrium between demand and supply.]]></summary></entry></feed>
+<p>It is also possible to factor in the bidders’ preference in terms of quantity of items acquired: “I want to acquire at least X items and at most Y” but as well as the percentage of ownership: “I want to acquire at least W% and at most Z% of the items”.</p>]]></content><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><category term="crypto" /><category term="nft" /><category term="market-design" /><category term="auctions" /><summary type="html"><![CDATA[Overview This paper introduces an auction design for NFT series that allows for a better equilibrium between demand and supply.]]></summary></entry><entry><title type="html">Always on sales and NFTs.</title><link href="/2021/08/21/always-on-sales-and-nft" rel="alternate" type="text/html" title="Always on sales and NFTs." /><published>2021-08-21T13:42:19+00:00</published><updated>2021-08-21T13:42:19+00:00</updated><id>/2021/08/21/always-on-sales-and-nft</id><content type="html" xml:base="/2021/08/21/always-on-sales-and-nft"><![CDATA[<p>I recently came across a Twitter thread proposing a financial engineering solution applying an <a href="https://medium.com/@simondlr/what-is-harberger-tax-where-does-the-blockchain-fit-in-1329046922c6">Harberger Tax to NFTs</a>.</p>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">Harbenger tax -&gt; re-thinking markets from the ground up. 2 core concepts:<br /><br />1) Users value their own assets and pay tax continuously on that value <br />2) At any point in time, anyone else can buy the asset from you at that price, forcing a sale <a href="https://t.co/cp5psshTEj">https://t.co/cp5psshTEj</a></p>&mdash; Amber Group (@ambergroup_io) <a href="https://twitter.com/ambergroup_io/status/1428934731186327560?ref_src=twsrc%5Etfw">August 21, 2021</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+<p>Harberger Tax is designed to address the problem that ownership is a monopoly. Simply put, once you are the owner of something, no one can force you to part from it. It is only you who can decide to put your asset on the market.</p>
+
+<p>Harberger’s idea is to</p>
+
+<ol>
+  <li>Force you to always publish a price at which you would be willing to sell.</li>
+  <li>Pay a tax, say every year, as a percentage of the price you published.</li>
+</ol>
+
+<p>The reason this is great is that it forces you to fairly price your economic opportunity, pay the tax that goes with it and allow anyone to buy that ownership for a greater economic opportunity.</p>
+
+<p>You can read more about it over at <a href="https://www.radicalxchange.org/">RadicalXChange</a>.</p>
+
+<p>In our case, the core issue is that some NFTs are being snatched by buyers at auctions and leave a lot of person with no access to it. They also can leave sellers with a less valuable outcome. A problem recently addressed by Vitalik Buterin who is proposing <a href="https://vitalik.ca/general/2021/08/22/prices.html">a design on how to have more equalitarian access to NFTs/fixed supply tokens sold through auctions/ICOs</a>.</p>
+
+<p>An experiment has already been done to use something like Harberger Tax by Simon de la Rouviere with <a href="https://thisartworkisalwaysonsale.com/">This Artwork Is Always On Sale</a>. His idea is that the tax rate is patronage to the artist. That is the artist gets ‘dividends’ from his work.</p>
+
+<p>You can read more about it <a href="https://blog.simondlr.com/posts/this-artwork-is-always-on-sale-v2">here</a>.</p>
+
+<p>All this goes in the direction of better market forces but there are other points of view. For instance:</p>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">6/ NFTs are built different.   <br /><br />There are 18 hoodie nerd glasses punks or 20 squiggles perfect spectrum that will eventually mostly end up in diamond hands over the next months/years as we play some musical chairs and shuffle things around</p>&mdash; 6529 (@punk6529) <a href="https://twitter.com/punk6529/status/1423370467096895489?ref_src=twsrc%5Etfw">August 5, 2021</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+
+<p>What is said here is that punk6529 wants to be able to “defend the castle”, <strong>at all costs</strong>. That is, by saying “no” to a transfer of ownership and hence opposes a mechanic such as always-on-sale.</p>
+
+<p>Many such people are very actively creating the myth and culture of the metaverse and arguably, without these early builders owning these NFTs NOW, we could (altogether, the commons) be left with a lesser economic opportunity than the one they are building.</p>
+
+<p>That is the opposite effect of what Harberger stands for.</p>
+
+<p>In a way, these owners of NFT somewhat agree with the ideas of Harberger. They already agreed to give part of their ownership by <a href="https://avc.com/2021/08/splitting-ownership-and-display-consumption/">splitting ownership and display/consumption</a> as Fred Wilson puts it. An NFT is public, anyone can see it, even ‘right-click’ it and save the underlying JPEG. But ownership is not shared.</p>
+
+<p>The NFT in itself is off the market. It allows the owner of the NFT to signal to be part of a community.</p>
+
+<p>To quote <a href="https://eriktorenberg.substack.com/p/signaling-on-the-internet">Erik Torenberg</a>:</p>
+
+<blockquote>
+  <p>“Membership is the message” and the more exclusive a club is to join, or the more impressive the criteria members need in order to join, the more membership is a signal.</p>
+</blockquote>
+
+<p>Raising the bar is not incompatible with Harberger, but in our case, if CryptoPunks were always-on-sale, speculation would possibly dilute or eviscerate some of the community behind it. Leaving it off the market protects the community from being invaded by <a href="https://meaningness.com/geeks-mops-sociopaths">MOPs and sociopaths</a>.</p>
+
+<p>They will find a way. And the community will be back to trading opinions. Intangibles, can’t be traded. And that’s what punk6529 wishes for:</p>
+
+<div class="jekyll-twitter-plugin"><blockquote class="twitter-tweet"><p lang="en" dir="ltr">What they want is being able to &quot;defend the castle&quot;, at all cost. That is, by saying &quot;no&quot; to a transfer of ownership. The key point is that without these people owning these NFTs NOW, we could (altogether) be left with a lesser economic opportunity than the one they are building.</p>&mdash; Picaroon Inc. (@picarooninc) <a href="https://twitter.com/picarooninc/status/1429537396769632258?ref_src=twsrc%5Etfw">August 22, 2021</a></blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>]]></content><author><name>Olivier Milla</name><email>olivier.milla@hey.com</email></author><category term="crypto" /><category term="nft" /><category term="market-design" /><category term="auctions" /><category term="SALSA" /><summary type="html"><![CDATA[I recently came across a Twitter thread proposing a financial engineering solution applying an Harberger Tax to NFTs.]]></summary></entry></feed>
